@@ -1,7 +1,4 @@
-go get -u gorm.io/gorm
-go get -u gorm.io/driver/postgres
-=> to install gorm drivers for postgres
-
+A crud backend with jwt authentication made using go, gin, gorm, go-jwt and postgres.
 
 Project layout:
 ```
