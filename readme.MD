@@ -8,6 +8,9 @@ Project layout:
 ├── cmd/
 │   └── main.go
 └── pkg/
+    └── auth/
+        ├── auth.go
+        └── jwt.go
     └── todo/
         ├── handler.go
         ├── model.go
@@ -19,5 +22,3 @@ Project layout:
         └── usercontroller.go
 ```
 
-
-To remove the jwt authentication, remove the auth middleware in todo/handler.go.
