@@ -1,11 +1,11 @@
-package models
+package user
 
 import (
 	"net/http"
 
-	"github.com/Augasty/go-jwt/auth"
-	"github.com/Augasty/go-jwt/database"
-	"github.com/Augasty/go-jwt/models"
+	"github.com/Augasty/go-jwt-todo/pkg/auth"
+
+	"gorm.io/gorm"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,9 +15,9 @@ type TokenRequest struct {
 	Password string `json:"password"`
 }
 
-func GenerateToken(context *gin.Context) {
+func GenerateToken(db *gorm.DB, context *gin.Context) {
 	var request TokenRequest
-	var user models.User
+	var user User
 	if err := context.ShouldBindJSON(&request); err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		context.Abort()
@@ -25,7 +25,7 @@ func GenerateToken(context *gin.Context) {
 	}
 
 	// check if email exists and password is correct
-	record := database.Instance.Where("email = ?", request.Email).First(&user)
+	record := db.Where("email = ?", request.Email).First(&user)
 	if record.Error != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
 		context.Abort()

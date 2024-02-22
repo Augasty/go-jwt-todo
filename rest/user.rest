@@ -1,0 +1,14 @@
+@host = localhost:8080
+
+// Register User
+POST http://{{host}}/user/register 
+content-type: application/json
+    
+{
+    "name": "ssg",
+    "username": "ssg",
+    "email": "ssg@go.com",
+    "password": "123465789"
+}
+
+###

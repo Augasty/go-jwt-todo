@@ -1,4 +1,4 @@
-package models
+package user
 
 import (
 	"golang.org/x/crypto/bcrypt"
@@ -12,7 +12,6 @@ type User struct {
 	Email    string `json:"email" gorm:"unique"`
 	Password string `json:"password"`
 }
-
 
 func (user *User) HashPassword(password string) error {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)

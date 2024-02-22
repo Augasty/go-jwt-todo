@@ -1,8 +1,6 @@
-package middlewares
+package auth
 
 import (
-	"github.com/Augasty/go-jwt/auth"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,7 +12,7 @@ func Auth() gin.HandlerFunc {
 			context.Abort()
 			return
 		}
-		err := auth.ValidateToken(tokenString)
+		err := ValidateToken(tokenString)
 		if err != nil {
 			context.JSON(401, gin.H{"error": err.Error()})
 			context.Abort()
