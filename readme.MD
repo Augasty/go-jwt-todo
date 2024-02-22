@@ -18,3 +18,6 @@ Project layout:
         ├── tokencontroller.go
         └── usercontroller.go
 ```
+
+
+To remove the jwt authentication, remove the auth middleware in todo/handler.go.
