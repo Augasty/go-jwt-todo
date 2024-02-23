@@ -22,7 +22,17 @@ func getTodos(c *gin.Context) {
 	db.Find(&todos)
 	c.JSON(http.StatusOK, todos)
 }
+func getSingeTodo(c *gin.Context) {
+	id := c.Param("id")
+	var todo Todo
+	if err := db.First(&todo, id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Todo not found"})
+		return
+	}
 
+	db.First(&todo, id)
+	c.JSON(http.StatusOK, todo)
+}
 func updateTodo(c *gin.Context) {
 	id := c.Param("id")
 	var todo Todo

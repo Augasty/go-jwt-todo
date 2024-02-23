@@ -47,6 +47,7 @@ func initRouter() *gin.Engine {
 	{
 		secured.POST("/todos", createTodo)
 		secured.GET("/todos", getTodos)
+		secured.GET("/todos/:id", getSingeTodo)
 		secured.PUT("/todos/:id", updateTodo)
 		secured.DELETE("/todos/:id", deleteTodo)
 	}
