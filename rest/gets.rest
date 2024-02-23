@@ -1,0 +1,27 @@
+@host = localhost:8080
+
+// Access a Secured API Endpoint
+GET http://{{host}}/secured/todos/2
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNzZyIsImVtYWlsIjoic3NnQGdvLmNvbSIsImV4cCI6MTcwODY5NzA2N30.1-cvjGvgWyF3cKtwTSRmOSedokzCDJa1O3U38npei8g
+
+
+# import axios from 'axios';
+
+# // Define the request parameters
+# const url = 'http://{{host}}/api/secured/ping';
+# const headers = {
+#   'Content-Type': 'application/json',
+#   'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNzZyIsImVtYWlsIjoic3NnQGdvLmNvbSIsImV4cCI6MTcwODQ1MTIyNn0.8FXNEbYCxAYAmcY3PGQyk6JTPZPoFJFZhIVOm5-GL_0'
+# };
+
+# // Send the GET request using Axios
+# axios.get(url, { headers })
+#   .then(response => {
+#     // Handle successful response
+#     console.log(response.data);
+#   })
+#   .catch(error => {
+#     // Handle error
+#     console.error('Error:', error);
+#   });
