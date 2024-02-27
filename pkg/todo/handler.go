@@ -4,7 +4,7 @@ import (
 	"github.com/Augasty/go-jwt-todo/pkg/auth"
 	"github.com/Augasty/go-jwt-todo/pkg/user"
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -12,8 +12,20 @@ func StartServer() {
 
 	// Initialize GORM
 	var err error
-	dsn := "host=localhost user=sayak password=pass1234 dbname=tododb port=5432 sslmode=disable"
-	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	dsn := "root:password@tcp(localhost:3306)/mysql?parseTime=true" // Connect to the MySQL system database
+	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	// Create the 'tododb' database if it doesn't exist
+	if err := db.Exec("CREATE DATABASE IF NOT EXISTS tododb").Error; err != nil {
+		panic("failed to create tododb database")
+	}
+
+	// Reconnect to the 'tododb' database
+	dsn = "root:password@tcp(localhost:3306)/tododb?parseTime=true"
+	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}

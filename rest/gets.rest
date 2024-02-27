@@ -3,8 +3,7 @@
 // Access a Secured API Endpoint
 GET http://{{host}}/secured/todos/2
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNzZyIsImVtYWlsIjoic3NnQGdvLmNvbSIsImV4cCI6MTcwODY5NzA2N30.1-cvjGvgWyF3cKtwTSRmOSedokzCDJa1O3U38npei8g
-
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNzZyIsImVtYWlsIjoic3NnQGdvLmNvbSIsImV4cCI6MTcwOTA1MjI1Nn0.C1wXq4KvZoLND4nY82J-_1hixAaO52OoR0x9AoDIMHg
 
 # import axios from 'axios';
 
